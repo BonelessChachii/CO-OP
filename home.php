@@ -111,7 +111,7 @@ $notif_check->close();
 
 <body>
 
-    <!-- 🔔 Notification + Connections + Profile -->
+    <!--  Notification + Connections + Profile -->
     <div class="notification-bar">
         <button id="notif-btn" onclick="window.location.href='notifications.php';">
             Notifications
@@ -125,7 +125,7 @@ $notif_check->close();
         <a href="edit_profile.php" class="btn">My Profile</a>
     </div>
 
-    <!-- 🔥 Main Content -->
+    <!--  Main Content -->
     <div class="container">
         <h2>Welcome to CO-OP</h2>
 
@@ -147,9 +147,9 @@ $notif_check->close();
 
     </div>
 
-    <!-- 🔊 Notification sound & toast -->
+    <!--  Notification sound & toast -->
     <audio id="notif-sound" src="Metal Gear Alert Sound Effect.mp3" preload="auto"></audio>
-    <div class="toast" id="toast">📬 New message received!</div>
+    <div class="toast" id="toast">📬 New notification!</div>
 
     <script>
         let lastCount = 0;
