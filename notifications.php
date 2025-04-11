@@ -9,17 +9,17 @@ if (!isset($_SESSION['user'])) {
 
 $user_id = $_SESSION['user'];
 
+// Retrieve like notifications and join with profiles to get the sender's display name.
 $stmt = $conn->prepare("
-    SELECT users.id, users.name, COUNT(*) as message_count 
-    FROM messages 
-    JOIN users ON messages.sender_id = users.id 
-    WHERE messages.receiver_id = ? AND messages.seen = 0 
-    GROUP BY messages.sender_id
+    SELECT p.user_id, p.name 
+    FROM likes l
+    JOIN profiles p ON l.sender = p.user_id
+    WHERE l.receiver = ? AND l.notified = 0
 ");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
-$result = $stmt->get_result();
-?>
+$likesResult = $stmt->get_result();
+$stmt->close(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -68,19 +68,25 @@ $result = $stmt->get_result();
 
     <div class="notif-box">
         <h2>New Notifications</h2>
-        <?php if ($result->num_rows > 0): ?>
-            <?php while ($row = $result->fetch_assoc()): ?>
+        <?php if ($likesResult->num_rows > 0): ?>
+            <?php while ($row = $likesResult->fetch_assoc()): ?>
                 <div class="notif-item">
-                    <span><?php echo htmlspecialchars($row['name']); ?> (<?php echo $row['message_count']; ?>)</span>
-                    <a class="chat-button" href="message.php?user=<?php echo $row['id']; ?>">Chat 💬</a>
+                    <span><?php echo htmlspecialchars($row['name']); ?> liked you!</span>
+                    <!-- <a class="chat-button" href="message.php?user=<?php echo $row['id']; ?>">Chat 💬</a> -->
                 </div>
             <?php endwhile; ?>
         <?php else: ?>
-            <p>No new notifications 📭</p>
+            <p>No new like notifications 📭</p>
         <?php endif; ?>
         <p style="text-align: center; margin-top: 20px;"><a href="home.php">← Back to Home</a></p>
     </div>
-
+    <?php
+    // Mark like notifications as shown
+    $update = $conn->prepare("UPDATE likes SET notified = 1 WHERE receiver = ? AND notified = 0");
+    $update->bind_param("i", $user_id);
+    $update->execute();
+    $update->close();
+    ?>
 </body>
 
 </html>
