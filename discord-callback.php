@@ -4,7 +4,7 @@ require 'db.php';
 
 $client_id = ''; //check .env file
 $client_secret = ''; //check .env file
-$redirect_uri = ''; //check .env file
+$redirect_uri = 'http://localhost/CO-OP/discord-callback.php';
 
 if (!isset($_GET['code'])) {
     die("No code from Discord.");
