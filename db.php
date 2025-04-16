@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$dbname = "coop_db";
+$host = ""; //check .env file
+$user = ""; //check .env file
+$pass = ""; //check .env file
+$dbname = ""; //check .env file
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
