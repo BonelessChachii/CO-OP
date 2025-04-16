@@ -2,9 +2,9 @@
 session_start();
 require 'db.php';
 
-$client_id = '1357254475080794184';
-$client_secret = 'UAg9FmWqVlpp020z7eAhgsZByurhOG3w';
-$redirect_uri = 'http://localhost/CO-OP/discord-callback.php';
+$client_id = '';
+$client_secret = '';
+$redirect_uri = '';
 
 if (!isset($_GET['code'])) {
     die("No code from Discord.");
