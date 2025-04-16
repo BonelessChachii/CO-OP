@@ -2,9 +2,9 @@
 session_start();
 require 'db.php';
 
-$client_id = '';
-$client_secret = '';
-$redirect_uri = '';
+$client_id = ''; //check .env file
+$client_secret = ''; //check .env file
+$redirect_uri = ''; //check .env file
 
 if (!isset($_GET['code'])) {
     die("No code from Discord.");
