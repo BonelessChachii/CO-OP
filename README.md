@@ -52,44 +52,47 @@ How to Deploy This Project
 - Import the file coop_db.sql from the CO-OP folder
 - Import
 
- 
-7. Run the Web App
+7. Import info from .env files to files
+- To ensure encryption, copy all the tokens, usernames, passwords, and URLs from the .env file to the correct file locations and line numbers. Each file location and line number is included in the .env file.
+
+
+8. Run the Web App
 - Open your browser and visit:
 - http://localhost/CO-OP/login.php
 
 
-8. To run two users on localhost 
+9. To run two users on localhost 
 - Run http://localhost/CO-OP/login.php on a NORMAL browser and create an account 
 - For the other user, open an Incognito tab or use a separate browser to create another account.
 - This way you can test two accounts' chat functions with each other.
 
 
-9. AI Usage Citation
+I. AI Usage Citation
 - AI Tools Used:
 - ChatGPT (GPT-3.5 via OpenAI)
 - Grammarly (For rephrasing and grammar correction)
 
-Prompts Used:
-- Help Debugging
-- Fix Css Styles 
-- Help with logic
+	Prompts Used:
+	- Help Debugging
+	- Fix Css Styles 
+	- Help with logic
+	
+	Affected Files/Components:
+	- Style.css, home.php, connections.php, edit_profile.php, discord login.php, profile.php
 
-Affected Files/Components:
-- Style.css, home.php, connections.php, edit_profile.php, discord login.php, profile.php
-
-Port & Config Notes
-- Apache: Port 80, 443
-- MySQL: Port 3306 (or 3307 if conflicts)
+	Port & Config Notes
+	- Apache: Port 80, 443
+	- MySQL: Port 3306 (or 3307 if conflicts)
 
 
-10. File Structure
+II. File Structure
 - HTML: register.html, login.html
 - PHP: login.php, register.php, profile.php, home.php, chat.php, edit_profile.php, messages.php
 - JS: swipe.js
 - Database: `coop_db` MySQL schema
 
 
-11. Notes
+III. Notes
 - Ensure the uploads folder exists and has write permissions.
   - To give permissions, go to the directory in the terminal cd ..../XAMPP/htdocs/CO-OP
   - Once inside the directory, type the command "chmod 777 uploads" into the terminal.
